@@ -62,11 +62,12 @@ Em ambos os casos (compra aprovada ou negada), o usuário pode optar por reinici
 git clone https://github.com/DaviSO7/CineSentinel.git
 cd CineSentinel
 
-# Run the project
+# Run on macOS or Linux
 ./gradlew run
-```
 
-> **Note**: não há uma **run task** explícita no `build.gradle.kts` atual (apenas o plugin `kotlin("jvm")`). Para executar diretamente, você pode compilar e rodar a classe `CineSentinelKt` pela sua IDE (IntelliJ), ou adicionar o **`application` plugin** ao Gradle para habilitar `./gradlew run`.
+# Run on Windows
+gradlew.bat run
+```
 
 ## Business Rules (Summary)
 
