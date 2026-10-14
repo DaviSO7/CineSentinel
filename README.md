@@ -8,7 +8,7 @@ O CineSentinel pede as informações do cliente (nome e idade) e do filme deseja
 
 1. **Movie availability** — atualmente só há um filme cadastrado no sistema: *Homem Aranha*.
 2. **Session type** — a sessão precisa ser do tipo `3D`.
-3. **Minimum age** — a idade do cliente precisa ser igual ou superior a 16 anos.
+3. **Minimum age** — a idade do cliente deve ser igual ou superior à classificação indicativa do filme.
 
 Se qualquer uma dessas condições não for atendida (ou se algum dado estiver `null`/vazio), a venda é negada (**invalid purchase**) e o motivo específico é exibido ao usuário. Caso contrário, a compra é confirmada (**valid purchase**) e o sistema pergunta se o usuário deseja realizar outra compra.
 
@@ -75,17 +75,15 @@ gradlew.bat run
 |---|---|
 | Movie | Nome do filme deve ser `"Homem Aranha"` |
 | Session type | Tipo do filme deve ser `"3D"` |
-| Minimum age | Idade do cliente ≥ 16 anos |
+| Minimum age | Idade do cliente ≥ classificação indicativa do filme |
 | Required fields | Nome, idade, nome do filme, classificação e tipo não podem ser `null`/vazios |
 
 ## Improvement Points
 
 - **Hardcoded movie catalog**: hoje só existe um filme válido (`"Homem Aranha"`) fixo no código. Poderia evoluir para um **movie catalog** (lista de filmes).
 - **Unused enum**: `OpcoesMotivosInvalidez` existe mas não é usado no **validation flow** — os motivos são chamados diretamente via `MotivosInvalidez()`.
-- **Static age check**: a checagem de idade está fixa em 16 anos, mas o campo `classificacaoFilme` (12, 16 ou 18) não é comparado dinamicamente com a idade do cliente.
 - **Exception handling**: `readln().toInt()` pode lançar uma **exception** se o usuário digitar um valor não numérico.
 - **Automated testing**: a dependência do JUnit já está configurada, mas ainda não há **unit tests** escritos.
-- Adicionar o **`application` plugin** do Gradle para permitir `./gradlew run` diretamente.
 
 ## License
 
