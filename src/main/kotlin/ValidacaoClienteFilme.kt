@@ -18,13 +18,14 @@ class ValidacaoClienteFilme {
                 MotivosInvalidez().motivoSessao()
                 OpcoesValidoNaoValido.NAO_VALIDO
             }
-            (infoCliente?.idade ?: 0) < 16 -> {
+            (infoCliente?.idade ?: 0) < (infoFilme.classificacaoFilme ?: Int.MAX_VALUE) -> {
                 MotivosInvalidez().motivoMenorIdade()
                 OpcoesValidoNaoValido.NAO_VALIDO
             }
             else -> OpcoesValidoNaoValido.VALIDO
         }
     }
+
     fun tentarComprarNovamente() {
         println("Você deseja tentar efetuar a compra novamente?")
         print("Digite (S/N): ")
